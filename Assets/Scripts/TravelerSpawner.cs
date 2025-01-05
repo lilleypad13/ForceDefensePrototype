@@ -22,7 +22,7 @@ public class TravelerSpawner : MonoBehaviour
 
     private void Start()
     {
-        Spawn();
+        Debug.Log("Press SPACE to spawn wave.");
     }
 
     private void Spawn()
