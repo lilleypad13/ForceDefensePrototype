@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca43b38ac869bf4083061059562a1a1, type: 3}
+  m_Name: Wave_1
+  m_EditorClassIdentifier: 
+  travelers:
+  - {fileID: 8801982217930211353, guid: 98edc0e643008e44f9de0622a13388f1, type: 3}
+  - {fileID: 8801982217930211353, guid: 98edc0e643008e44f9de0622a13388f1, type: 3}
+  - {fileID: 8801982217930211353, guid: 9c683d27860e451498c8c4c7401ea909, type: 3}
+  - {fileID: 8801982217930211353, guid: 9c683d27860e451498c8c4c7401ea909, type: 3}
+  - {fileID: 8801982217930211353, guid: ec718bd2526930946946dcf7c0c34949, type: 3}
+  - {fileID: 8801982217930211353, guid: 1385546205372264db7eba8da016c11e, type: 3}
+  - {fileID: 8801982217930211353, guid: a7faf0c2660db5b49a5d1e2111e575a5, type: 3}

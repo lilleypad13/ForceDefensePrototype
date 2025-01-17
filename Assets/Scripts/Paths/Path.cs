@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Path : MonoBehaviour
@@ -10,10 +11,10 @@ public class Path : MonoBehaviour
     [SerializeField] private GameObject pathSegmentPrefab;
     [SerializeField] private GameObject pathParent;
 
-    private void Start()
-    {
-        GeneratePath();
-    }
+    //private void Start()
+    //{
+    //    GeneratePath();
+    //}
 
     public Vector3[] GetWaypointPositions()
     {
@@ -26,12 +27,28 @@ public class Path : MonoBehaviour
         return tempWaypoints.ToArray();
     }
 
+    public void ClearCurrentPath()
+    {
+        // Clear out original path, if there is one.
+        foreach (Transform child in pathParent.transform)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+    }
+
     /// <summary>
     /// Procedurally generate a path based on the path waypoints provided, 
     /// as well as some general sizing parameters.
     /// </summary>
-    private void GeneratePath()
+    public void GeneratePath()
     {
+        // Clear out original path, if there is one.
+        List<Transform> existingPaths = pathParent.transform.Cast<Transform>().ToList();
+        foreach (Transform child in existingPaths)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+
         // Necessary values
         int pathSegmentCount = pathWaypoints.Length - 1;
 

@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class TravelerSpawner : MonoBehaviour
 {
     [Header("System")]
-    [SerializeField] private Traveler travelerPrefab;
     [SerializeField] private Path path;
     [SerializeField] private GameObject spawnGroup;
 
     [Header("Parameters")]
-    [SerializeField] private int spawnCount;
+    [SerializeField] private Wave wave;
     [SerializeField] private float timeBetweenSpawns = 0.5f;
+
+    // Events
+    public static event Action<Traveler> OnTravelerSpawned;
 
     private void Update()
     {
@@ -32,10 +35,11 @@ public class TravelerSpawner : MonoBehaviour
 
     private IEnumerator Spawn_CR()
     {
-        for (int i = 0; i < spawnCount; i++)
+        for (int i = 0; i < wave.Travelers.Length; i++)
         {
-            Traveler traveler = Instantiate(travelerPrefab, path.GetWaypointPositions()[0], Quaternion.identity, spawnGroup.transform);
+            Traveler traveler = Instantiate(wave.Travelers[i], path.GetWaypointPositions()[0], Quaternion.identity, spawnGroup.transform);
             traveler.SetPath(path);
+            OnTravelerSpawned?.Invoke(traveler);
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
     }

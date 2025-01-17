@@ -6,6 +6,12 @@ public class CoulombTower : MonoBehaviour
     [SerializeField] private float charge;
 
     private Traveler targetTraveler;
+    private TravelerSpawnManager spawnManager;
+
+    private void Awake()
+    {
+        spawnManager = FindFirstObjectByType<TravelerSpawnManager>();
+    }
 
     private void Update()
     {
@@ -24,7 +30,32 @@ public class CoulombTower : MonoBehaviour
     {
         if(targetTraveler == null)
         {
-            targetTraveler = FindAnyObjectByType<Traveler>();
+            FindNewTarget();
+        }
+        else
+        {
+            if (!targetTraveler.IsOnGround)
+            {
+                FindNewTarget();
+            }
+        }
+    }
+
+    private void FindNewTarget()
+    {
+        if (spawnManager != null)
+        {
+            if (spawnManager.ActiveTravelers.Count > 0)
+            {
+                for (int i = 0; i < spawnManager.ActiveTravelers.Count; i++)
+                {
+                    if (spawnManager.ActiveTravelers[i].IsOnGround)
+                    {
+                        targetTraveler = spawnManager.ActiveTravelers[i];
+                        return;
+                    }
+                }
+            }
         }
     }
 
