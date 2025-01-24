@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TravelerSpawnManager : MonoBehaviour
 {
-    private List<Traveler> activeTravelers = new List<Traveler>();
+    [SerializeField] private List<Traveler> activeTravelers = new List<Traveler>();
     public List<Traveler> ActiveTravelers { get => activeTravelers; }
 
     private void OnEnable()

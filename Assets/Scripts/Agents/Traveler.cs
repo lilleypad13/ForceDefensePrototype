@@ -5,11 +5,9 @@ using System;
 [System.Serializable]
 public struct TravelerProperties
 {
-    [SerializeField]
-    private float charge;
+    [SerializeField] private float charge;
     public float Charge { get => charge; }
-    [SerializeField]
-    private float mass;
+    [SerializeField] private float mass;
     public float Mass { get => mass; }
 }
 
