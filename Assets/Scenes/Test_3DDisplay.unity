@@ -458,6 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014597157}
+  - component: {fileID: 1014597158}
   m_Layer: 0
   m_Name: FBDContainer
   m_TagString: Untagged
@@ -482,6 +483,22 @@ Transform:
   - {fileID: 1688903477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1014597158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014597156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c39ed0537575f4983299b00c1a0b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FBDManager
+  FBDCamera: {fileID: 1766117439}
+  FBDPreviewTarget: {fileID: 1688903476}
+  rotateSpeed: 100
+  zoomSpeed: 10
 --- !u!1 &1199870205
 GameObject:
   m_ObjectHideFlags: 0
