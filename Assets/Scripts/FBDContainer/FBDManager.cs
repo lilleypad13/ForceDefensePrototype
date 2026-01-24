@@ -4,11 +4,25 @@ public class FBDManager : MonoBehaviour
 {
     // References
     [SerializeField] private Camera FBDCamera;
+    [SerializeField] private Transform spawnParent;
     [SerializeField] private GameObject FBDPreviewTarget;
 
     // Parameters
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float zoomSpeed;
+    [SerializeField] private LayerMask fbdPreviewLayer;
+
+    private void OnEnable()
+    {
+        // Debug
+        Debug_FBDManager.OnSelectedNewFBDTarget += PopulateFBDSubject;
+    }
+
+    private void OnDisable()
+    {
+        // Debug
+        Debug_FBDManager.OnSelectedNewFBDTarget -= PopulateFBDSubject;
+    }
 
     private void Update()
     {
@@ -36,6 +50,23 @@ public class FBDManager : MonoBehaviour
         if (Input.GetKey(KeyCode.B))
         {
             FBDCamera.transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
+        }
+    }
+
+    private void PopulateFBDSubject(GameObject fbdSubject)
+    {
+        Debug.Log("Populated FBD Preview with new subject.");
+        Clear();
+        FBDPreviewTarget = Instantiate(fbdSubject, spawnParent);
+        FBDPreviewTarget.layer = Mathf.RoundToInt(Mathf.Log(fbdPreviewLayer.value, 2));
+    }
+
+    private void Clear()
+    {
+        Debug.Log("Cleared FBD Subject from Preview.");
+        if (FBDPreviewTarget != null)
+        {
+            Destroy(FBDPreviewTarget);
         }
     }
 }
